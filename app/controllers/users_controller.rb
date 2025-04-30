@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to user_url(@user), notice: "ユーザーの新規作成に成功しました" }
+        format.html { redirect_to user_url(@user), notice: "ユーザーの新規登録に成功しました" }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
