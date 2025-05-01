@@ -4,6 +4,10 @@
 
 <div id="users">
   <% @users.each do |user| %>
+    <tr>
+    <td><% user.name %></td>
+    <td><% user.age %></td>
+    </tr>
     <%= render user %>
     <p>
       <%= link_to "詳細", user %>
