@@ -1,18 +1,25 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>ユーザー一覧</h1>
-
-<div id="users">
+<table>
+<thead>
+ <tr>
+  <th>Name</th>
+  <th>Age</th>
+ </tr>
+</thead>
+<tbody>
   <% @users.each do |user| %>
 
-  <%= render user %>
-  <td><%= user.name %></td>
+ <tr>
+   <td><%= user.name %></td>
+
   <td><%= user.age %></td>
-    <p>
-      <%= link_to "詳細", user %>
-    </p>
-  <% end %>
 
-</div>
+  <td><%= link_to "詳細", user %></td>
+ </tr>
+ <% end %>
+</tbody>
+</table>
 
-<%= link_to "新規作成", new_user_path %>
+ <%= link_to "新規作成", new_user_path %>
