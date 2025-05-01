@@ -2,18 +2,18 @@
 
 <h1>ユーザー一覧</h1>
 <table>
-<div id="users">
+
   <% @users.each do |user| %>
-    <tr>
-    <td><% user.name %></td>
-    <td><% user.age %></td>
-    </tr>
-    <%= render user %>
-    <p>
-      <%= link_to "詳細", user %>
-    </p>
+    <thead>
+
+</thead>
+<td>名前:<%= user.name %></td>
+
+<td>年齢:<%= user.age %></td>
+
+<td><%= link_to "詳細", user %></td>
+ </tr>
   <% end %>
-  
-</div>
-</table>
-<%= link_to "新規作成", new_user_path %>
+ </table>
+
+ <%= link_to "新規作成", new_user_path %>
