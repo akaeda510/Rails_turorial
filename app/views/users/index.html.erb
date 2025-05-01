@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>ユーザー一覧</h1>
-
+<table>
 <div id="users">
   <% @users.each do |user| %>
     <tr>
@@ -13,6 +13,7 @@
       <%= link_to "詳細", user %>
     </p>
   <% end %>
+  
 </div>
-
+</table>
 <%= link_to "新規作成", new_user_path %>
