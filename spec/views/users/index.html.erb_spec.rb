@@ -16,7 +16,9 @@ RSpec.describe "users/index", type: :view do
 
   it "renders a list of users" do
     render
-    assert_select "tr>td", text: "Name".to_s, count: 2
-    assert_select "tr>td", text: 2.to_s, count: 2
+    assert_select "#users div[id^=user_] p>strong", text: "名前:", count: 2
+    assert_select "#users div[id^=user_] p", text: /Name/, count: 2
+    assert_select "#users div[id^=user_] p>strong", text: "年齢:", count: 2
+    assert_select "#users div[id^=user_] p", text: /2/, count: 2
   end
 end
