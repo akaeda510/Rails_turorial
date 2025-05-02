@@ -1,13 +1,17 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_index_title, only: :index
+  before_action :set_show_title, only: :show
 
   # GET /users or /users.json
   def index
     @users = User.all
+    @index_title = 'ユーザー一覧'
   end
 
   # GET /users/1 or /users/1.json
   def show
+   @show_title = 'ユーザー詳細'
   end
 
   # GET /users/new
@@ -19,9 +23,14 @@ class UsersController < ApplicationController
   def edit
   end
 
+def user_params
+  params.require(:user).permit(:name, :age)
+end 
+
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
+    
 
     respond_to do |format|
       if @user.save
@@ -66,5 +75,13 @@ class UsersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:name, :age)
+    end
+
+    def set_index_title
+      @index_title = 'ユーザー一覧'
+    end
+
+    def set_show_title
+      @show_title = 'ユーザー詳細'
     end
 end
