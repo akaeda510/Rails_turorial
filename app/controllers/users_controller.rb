@@ -5,8 +5,10 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.order(:age)
+   
+    @users = User.where(age: 20..50).order(age: :desc)
     @index_title = 'ユーザー一覧'
+   
     
   end
 
