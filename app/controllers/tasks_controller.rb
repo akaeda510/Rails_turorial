@@ -28,7 +28,7 @@ class TasksController < ApplicationController
     def update
         respond_to do |format|
             if @task.update(task_params)
-                format.html { redirect_to task_url(@task)}
+                format.html { redirect_to task_url(@task), notice: "タスクの更新に成功しました"}
                 format.json { render :show, status: :ok, location: @task}
             end
         end
