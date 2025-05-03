@@ -3,6 +3,7 @@ class TasksController < ApplicationController
 
     def index
         @tasks = Task.all
+        @index_title = 'タスク一覧'
     end
 
     def show
@@ -15,7 +16,7 @@ class TasksController < ApplicationController
     def create
         @task = Task.new(task_params)
         if @task.save
-            redirect_to @task, notice: 'タスクを新規登録に成功しました'
+            redirect_to @task, notice: 'タスクの新規登録に成功しました'
         else
             render :new
         end
@@ -25,9 +26,21 @@ class TasksController < ApplicationController
     end
 
     def update
+        respond_to do |format|
+            if @task.update(task_params)
+                format.html { redirect_to task_url(@task)}
+                format.json { render :show, status: :ok, location: @task}
+            end
+        end
     end
 
     def destroy
+        @task.destroy
+
+        respond_to do |format|
+            format.html { redirect_to tasks_url}
+            format.json { head :no_content}
+        end
     end
 
     private
